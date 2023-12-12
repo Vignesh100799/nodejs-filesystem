@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 
 // API endpoint to get the timestamp
 app.get('/', (req, res) => {
-  res.json(`The current date and time is ${date}`);
+  res.json(`{The current date and time is ${date}}`);
 });
 
 app.listen(port, () => {
