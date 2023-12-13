@@ -34,6 +34,17 @@ app.get('/', (req, res) => {
   res.json(`{The current date and time is ${date}}`);
 });
 
+app.get('/files', (req, res) => {
+  fs.readdir(folderName, (err, files) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      const textFiles = files.filter(file => path.extname(file) === '.txt');
+      res.json( {textFiles} );
+    }
+  });
+});
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
